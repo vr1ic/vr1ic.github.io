@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuadros con enlaces</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 300px;
+            margin: auto;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 60px;
+            border: 2px solid black;
+            border-radius: 15px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .box a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Archivos</h2>
+    <div class="container">
+        <div class="box"><a href="nnn.html">Archivo 1</a></div>
+        <div class="box"><a href="ccc.html">Archivo 2</a></div>
+        <div class="box"><a href="carpeta/archivo3.pdf">Archivo 3</a></div>
+        <div class="box"><a href="carpeta/archivo4.pdf">Archivo 4</a></div>
+        <div class="box"><a href="carpeta/archivo5.pdf">Archivo 5</a></div>
+        <div class="box"><a href="carpeta/archivo6.pdf">Archivo 6</a></div>
+        <div class="box"><a href="carpeta/archivo7.pdf">Archivo 7</a></div>
+        <div class="box"><a href="carpeta/archivo8.pdf">Archivo 8</a></div>
+        <div class="box"><a href="carpeta/archivo9.pdf">Archivo 9</a></div>
+    </div>
+</body>
+</html>

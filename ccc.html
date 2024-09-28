@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        button {
+            margin-top: 10px;
+            display: inline-block;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1> </h1>
+<textarea id="inputData" placeholder="Ingresa los datos aquí..."></textarea>
+<button onclick="ordenarFechas()">Ordenar</button>
+<button onclick="copiarColumna()">Copiar Columna</button>
+
+<h2> </h2>
+<pre id="outputData"></pre>
+
+<script>
+    function ordenarFechas() {
+        const input = document.getElementById('inputData').value.trim();
+        const lines = input.split('\n');
+        const regex = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/; // Regex para buscar la fecha y hora
+
+        const sortedLines = lines.filter(line => regex.test(line)).sort((a, b) => {
+            const dateA = new Date(a.match(regex)[0]);
+            const dateB = new Date(b.match(regex)[0]);
+            return dateB - dateA; // Ordenar de mayor a menor
+        });
+
+        // Agregar enumeración a cada línea
+        const enumeratedLines = sortedLines.map((line, index) => `${index + 1}. ${line}`);
+
+        document.getElementById('outputData').textContent = enumeratedLines.join('\n');
+    }
+
+    function copiarColumna() {
+        const input = document.getElementById('inputData').value.trim();
+        const lines = input.split('\n');
+        const regex = /(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/; // Regex para buscar la fecha y hora
+
+        const sortedLines = lines.filter(line => regex.test(line)).sort((a, b) => {
+            const dateA = new Date(a.match(regex)[0]);
+            const dateB = new Date(b.match(regex)[0]);
+            return dateB - dateA; // Ordenar de mayor a menor
+        });
+
+        // Obtener solo la cuarta columna (donde están los números "9", "3", etc.)
+        const column4 = sortedLines.map(line => line.split(/\s+/)[3]).join('\n');
+        
+        // Copiar al portapapeles
+        navigator.clipboard.writeText(column4).then(() => {
+            alert("Columna 4 copiada al portapapeles");
+        });
+    }
+</script>
+
+</body>
+</html>

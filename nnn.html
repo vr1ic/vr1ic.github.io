@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Texto</title>
+</head>
+<body>
+    <h1> </h1>
+    
+    <label for="inputTexto"> </label>
+    <textarea id="inputTexto" rows="10" cols="80"></textarea><br><br>
+
+    <button onclick="procesarTexto()">Procesar</button>
+
+    <h2> </h2>
+    <pre id="resultado"></pre>
+
+    <script>
+        function procesarTexto() {
+            // Obtener el texto ingresado por el usuario
+            var texto = document.getElementById("inputTexto").value;
+            
+            // Expresión regular para encontrar todo entre "1/1" y "undefined"
+            var regex = /(1\/1\/[^\n]+undefined)/g;
+            var coincidencias = texto.match(regex);
+
+            if (coincidencias) {
+                // Mostrar las coincidencias encontradas
+                document.getElementById("resultado").textContent = coincidencias.join("\n");
+            } else {
+                document.getElementById("resultado").textContent = "No se encontró el patrón especificado.";
+            }
+        }
+    </script>
+</body>
+</html>
